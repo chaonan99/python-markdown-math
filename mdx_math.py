@@ -48,11 +48,11 @@ class MathExtension(markdown.extensions.Extension):
         )
         mathpatterns = (
             markdown.inlinepatterns.Pattern(r'(?<!\\)(\$\$)([^\$]+)(\$\$)'), # $$...$$
-            markdown.inlinepatterns.Pattern(r'(?<!\\)(\\\[)(.+?)(\\\])'),    # \[...\]
+            # markdown.inlinepatterns.Pattern(r'(?<!\\)(\\\[)(.+?)(\\\])'),    # \[...\]
             markdown.inlinepatterns.Pattern(r'(?<!\\)(\\begin{([a-z]+?\*?)})(.+?)(\\end{\3})')
         )
-        if not self.getConfig('enable_dollar_delimiter'):
-            inlinemathpatterns = inlinemathpatterns[1:]
+        # if not self.getConfig('enable_dollar_delimiter'):
+        #     inlinemathpatterns = inlinemathpatterns[1:]
         for i, pattern in enumerate(inlinemathpatterns):
             pattern.handleMatch = handle_match_inline
             md.inlinePatterns.add('math-inline-%d' % i, pattern, '<escape')
